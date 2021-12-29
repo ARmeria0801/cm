@@ -94,12 +94,33 @@ public class GoodsQnaService {
 		return goodsQnaDAO.getGoodsQuestionDetail(gdsqna_num);
 	}
 
-	// 답변 가져오기
+	// 문의 답변 가져오기 ( gdsqna_ref)
 	public GoodsQnaVO getGoodsAnswerDetail(int gdsqna_num) {
 		return goodsQnaDAO.getGoodsAnswerDetail(gdsqna_num);
 	}
 
-	
+	// 문의 확인 업데이트
+	public void updateCheckQna(int gdsqna_num) {
+		goodsQnaDAO.updateCheckQna(gdsqna_num);
+	}
+
+	// 문의 답변 달기
+	public void insertGoodsQna(GoodsQnaVO goodsquestion) {
+		goodsQnaDAO.insertGoodsQna(goodsquestion);
+	}
+
+	// 문의 답변글 가져오기(gdsqna_num)
+	public GoodsQnaVO getGoodsAnswer(int gdsqna_num) {
+		return goodsQnaDAO.getGoodsAnswer(gdsqna_num);
+	}
+
+	public void updateAnswer(GoodsQnaVO goodsqna) {
+		goodsQnaDAO.updateAnswer(goodsqna);
+	}
+
+	public void deleteAnswer(int gdsqna_num) {
+		goodsQnaDAO.deleteAnswer(gdsqna_num);
+	}
 
 	public List<GoodsQnaVO> getMainGoodsQnaList(String sel_name) {
 		return goodsQnaDAO.getMainGoodsQnaList(sel_name);
