@@ -41,15 +41,15 @@
 					<div style="text-align: right"> <a href="goodsupdate?&gds_num=${order.gds_num}">상품 수정하기</a></div>
 				</td>
 				<td>
-					<c:choose>
-						<c:when test="${order.opt_2ndval != null}">
+					<c:choose>	
+						<c:when test="${order.opt_2ndval != null}"> <!-- 옵션이 2종류이면 -->
 							${order.opt_1stname} : ${order.opt_1stval}	<br>
 							${order.opt_2ndname} : ${order.opt_2ndval}
 						</c:when>
-						<c:when test="${order.opt_1stval != null}">
+						<c:when test="${order.opt_1stval != null}">	 <!-- 옵션이 1 종류이면 -->
 							${order.opt_1stname} : ${order.opt_1stval}
 						</c:when>
-						<c:otherwise>
+						<c:otherwise>								 <!-- 옵션이 없으면 -->
 							-
 						</c:otherwise>
 					</c:choose>
@@ -60,10 +60,10 @@
 				<td><fmt:formatNumber value="${order.gds_price}" pattern="#,###원" /></td>
 				<td>${order.ord_status} <br>
 					<c:choose>
-						<c:when test="${order.ord_delnum eq null }">
+						<c:when test="${order.ord_delnum eq null }">	<!-- 배송준비중 이면 -->
 							<input type="button" value="송장번호 입력">
 						</c:when>
-						<c:when test="${order.ord_delnum ne null }">
+						<c:when test="${order.ord_delnum ne null }">	<!-- 배송중 이라면 -->
 							${order.ord_delnum}
 						</c:when>
 					</c:choose>

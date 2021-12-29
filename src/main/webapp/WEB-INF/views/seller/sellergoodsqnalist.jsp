@@ -59,19 +59,19 @@ table {width:900px;}
 <body>
 <%@ include file="../layout/sellerSidebar.jsp" %>
 <div class="goodsQnaList">
-	<table border="1" id="goodsQnaTable" width="800">
+	<table border="1" id="goodsQnaTable" style="table-layout:fixed" width="800">
 		<caption>문의 내역</caption>
 		<tr>
 			<th width="5%">번호</th>
 			<th width="20%">상품명</th>
-			<th width="35%">문의제목</th>
+			<th width="25%">문의제목</th>
 			<th width="20%">문의날짜</th>
 			<th width="20%">상태</th>
-			<th>액션</th>
+			<th width="10%">액션</th>
 		</tr>
 		<c:set var="num" value="${listcount-(page-1)*10}"/> 
 		<c:forEach var="sellergoodsQnaList" items="${sellergoodsQnaList}">
-			<tr <c:if test="${sellergoodsQnaList.gdsqna_check == 0 }"> class="notcheck"</c:if>>
+			<tr <c:if test="${sellergoodsQnaList.gdsqna_check == 0 }"> class="notcheck"</c:if> height=30px>
 				<td style="text-align: center;"><!-- 번호 출력 부분 -->
 					<input type="hidden" id="gdsqna_num" name="gdsqna_num" value="${sellergoodsQnaList.gdsqna_num}">
 					<c:out value="${num}"/>			
@@ -98,7 +98,6 @@ table {width:900px;}
 							if($("#questiondetail"+gdsqna_num).hasClass('hide')) {
 								 $.ajax({
 								    url : '/showgoodsQnadetail', // 요청 할 주소
-								   // async: true, // false 일 경우 동기 요청으로 변경
 								    type : 'post', // GET, PUT
 								    dataType : 'text',
 								    data : {

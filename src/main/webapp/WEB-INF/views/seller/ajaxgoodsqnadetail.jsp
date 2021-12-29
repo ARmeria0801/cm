@@ -27,19 +27,19 @@ function updategoodsqnaanswer(gdsqna_num) {
 </script>
 
 <!-- 문의글 -->
-	<table id="questionTable" border="1" >
+	<table id="questionTable" border="1" style="table-layout:fixed" >
 		<caption>문의</caption>
 		<tr>
 			<th width="100">상품 정보</th>
 			<td style="border-right: none;" width="100">
 				<img src="<%=request.getContextPath() %>/resources/images/thumbnailimage/${goodsquestion.gds_thumbnail}" height="100" width="100" />
 			</td>
-			<td style="border-left: none; white-space:nowrap; overflow: hidden;" width="200">
+			<td style="border-left: none; white-space:nowrap; overflow: hidden;" width="500">
 				${goodsquestion.gds_name}
 				<br><br>
 				<div style="text-align: right"> <a href="goodsupdate?&gds_num=${goodsquestion.gds_num}">상품 수정하기</a></div>
 			</td>
-			<td>
+			<td width="100"	>
 				<fmt:formatDate value="${goodsquestion.gdsqna_date}" pattern="yyyy-MM-dd HH:mm:ss"/> 
 			</td>
 		</tr>

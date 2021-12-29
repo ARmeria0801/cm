@@ -15,8 +15,6 @@
 		select count(*) from project.order
 	</select>
 
-
-	
 	판매자 페이지에서 주문 리스트 갯수 구해오기
 	<select id="select_order_list_count" resultType="int" parameterType="String" >
 		select count(*) from project.order where gds_seller=#{sel_name}

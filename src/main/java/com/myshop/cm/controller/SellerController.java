@@ -838,8 +838,7 @@ public class SellerController {
 	// 상품 문의 답변 수정 폼으로 이동
 	@RequestMapping(value = "/updategoodsqnaanswerform")
 	public String updategoodsqnaanswerform(@RequestParam(value = "gdsqna_num") int gdsqna_num,
-										Model model) {
-		
+										Model model) {	
 		// 받아온 gdsqna_num으로 답변 정보 불러오기
 		GoodsQnaVO answer =  goodsQnaService.getGoodsAnswer(gdsqna_num);
 		

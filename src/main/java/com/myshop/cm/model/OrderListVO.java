@@ -22,7 +22,7 @@ public class OrderListVO {
 	// 주문정보를 토대로 받아올 추가정보들
     private String gds_thumbnail;
     private String gds_name;
-    private String gds_price;
+    private int gds_price;
     private String mem_id;
     private String opt_1stname;
     private String opt_1stval; 
@@ -151,10 +151,10 @@ public class OrderListVO {
 	public void setDeltem_delfee(int deltem_delfee) {
 		this.deltem_delfee = deltem_delfee;
 	}
-	public String getGds_price() {
+	public int getGds_price() {
 		return gds_price;
 	}
-	public void setGds_price(String gds_price) {
+	public void setGds_price(int gds_price) {
 		this.gds_price = gds_price;
 	}
 }
