@@ -41,6 +41,7 @@ public class GoodsVO {
 	private int gds_sellcount;
 	private String gds_ears;
 	private String gds_viewyn;
+	private int gds_count;
 	
 	//배송 관련
 	private DeliveryTemplateVO deliveryTemplateVO;
@@ -200,5 +201,13 @@ public class GoodsVO {
 
 	public void setDeliveryTemplateVO(DeliveryTemplateVO deliveryTemplateVO) {
 		this.deliveryTemplateVO = deliveryTemplateVO;
+	}
+
+	public int getGds_count() {
+		return gds_count;
+	}
+
+	public void setGds_count(int gds_count) {
+		this.gds_count = gds_count;
 	}
 }

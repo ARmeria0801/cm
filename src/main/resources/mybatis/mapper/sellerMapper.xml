@@ -67,7 +67,7 @@
 		where gds_seller=#{sel_name}
 		group by gds_num
 		order by gds_num desc
-		limit #{pageIndex}, 10;
+		limit #{pageIndex}, 10
 	
 	<!-- 	select * from goods
 		where gds_delyn='y' 

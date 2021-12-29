@@ -577,8 +577,8 @@ public class SellerController {
 			}else {
 				System.out.println("기존 작성한 옵션이 있는 경우 - 기존에 옵션없이 작성");
 				OptionVO optionvo = new OptionVO();
-				optionvo.setOpt_num(Integer.parseInt(request.getParameter("edit_opt_num")));
-				optionvo.setOpt_count(Integer.parseInt(request.getParameter("edit_opt_count")));
+				optionvo.setOpt_num(Integer.parseInt(request.getParameter("opt_num")));
+				optionvo.setOpt_count(Integer.parseInt(request.getParameter("opt_count")));
 				
 				optionService.updateOption(optionvo);
 			} // else end

@@ -40,7 +40,7 @@
 				</td>
 				<td style="border-left: none;">
 					<a href="sellerorderdetail?ord_num=${order.ord_num}&page=${page}">${order.gds_name}<br><br></a>
-					<button type="button" onclick="location.href='goodsupdate?&gds_num=${order.ord_gdsnum}'">상품 수정하기</button>
+					<button type="button" onclick="location.href='goodsupdate?&gds_num=${order.gds_num}'">상품 수정하기</button>
 				</td>
 				<td>
 					<c:choose>	
