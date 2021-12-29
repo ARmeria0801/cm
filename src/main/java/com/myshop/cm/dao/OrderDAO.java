@@ -22,12 +22,12 @@ public class OrderDAO {
 		OrderVO orderrev = sqlSession.selectOne("orderMapper.review_ord", ord_num);
 		return orderrev;
 	}
-	// 판매자 페이지에서 주문리스트 갯수 가져오기
+	// 마이페이지 주문내역 갯수 가져오기
 	@Transactional
 	public int getHistoryListCount() throws Exception{
 		return sqlSession.selectOne("orderMapper.history_list_count");
 	}
-	// 판매자 페이지에서 주문리스트 가져오기
+	// 마이 페이지 주문내역
 	@Transactional
 	public List<OrderVO> getHistoryList(int pageIndex) {
 		return sqlSession.selectList("orderMapper.history_list",pageIndex);

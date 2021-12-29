@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+
+#writeform{
+	margin-left: 500px;
+	margin-right: 10px; 
+}
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+}
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  font-size: 12px;
+  text-align: center;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #808080;
+  color: white;
+  width:70px;
+  height: 75px;
+}
+#customers td{
+	width:300px;
+}
+
+#customers a{
+	color: #000;
+	text-decoration: none;
+}
+
+#customers a:hover{
+	color: #808080;
+}
+
+#writeform button{
+	 display:inline-block;
+	 margin-left: 135px;
+	 background-color:#808080;
+	 color: #ffffff;
+	 border-radius: 3px;
+	 border: 1px solid #000;  /* 버튼 테두리 */
+}
+
+#writeform button:hover{	/* 버튼을 마우스에 올렸을때 */
+	background-color: #ffffff;
+	color: #808080;
+}

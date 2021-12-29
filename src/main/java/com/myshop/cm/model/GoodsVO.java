@@ -14,8 +14,6 @@ public class GoodsVO {
 //			  `gds_name` 	varchar(50) NOT NULL 				COMMENT '상품명',
 //			  `gds_price` 	int(11) 	NOT NULL 				COMMENT '상품 가격',
 //			  `gds_detail` 	text 								COMMENT '상품 설명',
-//			  `gds_option` 	varchar(1000) DEFAULT NULL 			COMMENT '상품 옵션',
-//			  `gds_count` 	int(11) 	NOT NULL 				COMMENT '상품 재고',
 //			  `gds_thumbnail` varchar(100) DEFAULT NULL 		COMMENT '상품 썸네일 파일명',
 //			  `gds_date` 	timestamp 	NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '상품 등록일',
 //			  `deltem_num` 	int(11) 	DEFAULT NULL 			COMMENT '배송 템플릿 번호',
@@ -24,7 +22,6 @@ public class GoodsVO {
 //			  `gds_sellcount` int(11) 	NOT NULL 				COMMENT '상품 판매수',
 //			  `gds_ears` 	varchar(1000) DEFAULT NULL 			COMMENT '교환,환불 기준',
 //			  `gds_viewyn` 	varchar(1) 	NOT NULL 				COMMENT '상품노출Y/N',
-//			  `gds_delyn` 	varchar(1) 	NOT NULL 				COMMENT '상품Y/N',
 //			  PRIMARY KEY (`gds_num`)
 //			) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COMMENT='상품';
 
@@ -36,8 +33,6 @@ public class GoodsVO {
 	private String gds_name;
 	private int gds_price;
 	private String gds_detail;
-	private String gds_option;
-	private int gds_count;
 	private String gds_thumbnail;
 	private Date gds_date;
 	private int deltem_num;
@@ -46,8 +41,9 @@ public class GoodsVO {
 	private int gds_sellcount;
 	private String gds_ears;
 	private String gds_viewyn;
-	private String gds_delyn;
 	
+	//배송 관련
+	private DeliveryTemplateVO deliveryTemplateVO;
 	//옵션
 	private List<OptionVO> optionVO;
 	
@@ -134,22 +130,6 @@ public class GoodsVO {
 		this.gds_detail = gds_detail;
 	}
 
-	public String getGds_option() {
-		return gds_option;
-	}
-
-	public void setGds_option(String gds_option) {
-		this.gds_option = gds_option;
-	}
-
-	public int getGds_count() {
-		return gds_count;
-	}
-
-	public void setGds_count(int gds_count) {
-		this.gds_count = gds_count;
-	}
-
 	public String getGds_thumbnail() {
 		return gds_thumbnail;
 	}
@@ -214,11 +194,11 @@ public class GoodsVO {
 		this.gds_viewyn = gds_viewyn;
 	}
 
-	public String getGds_delyn() {
-		return gds_delyn;
+	public DeliveryTemplateVO getDeliveryTemplateVO() {
+		return deliveryTemplateVO;
 	}
 
-	public void setGds_delyn(String gds_delyn) {
-		this.gds_delyn = gds_delyn;
+	public void setDeliveryTemplateVO(DeliveryTemplateVO deliveryTemplateVO) {
+		this.deliveryTemplateVO = deliveryTemplateVO;
 	}
 }

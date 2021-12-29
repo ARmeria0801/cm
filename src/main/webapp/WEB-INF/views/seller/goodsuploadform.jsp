@@ -23,7 +23,8 @@
 <link rel="stylesheet" href="<c:url value='/resources/css/seller/sellergoodsupload.css'/>">
 </head>
 <body>
-<%@ include file="../layout/sellerSidebar.jsp" %>
+<%@ include file="../layout/sellerheader.jsp" %>
+<%@ include file="../layout/sellerSidebar2.jsp" %>
 	<div id="goodsuploadform">
 		<form method="post" action="<%=request.getContextPath()%>/goodsupload" enctype="multipart/form-data" onsubmit="return goodsupload_check()">
 			<table border="1" width="1200" class="goodsUploadForm">

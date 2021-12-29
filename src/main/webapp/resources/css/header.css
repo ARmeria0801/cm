@@ -3,8 +3,8 @@
 
 header  {
   margin: auto; /* header의 양쪽 여백(margin)을 동등하게 맞춤 -> 수평가운데정렬 */
-  /* margin-left: 200px; */
-  width: 1500px;
+  margin-right: 400px;
+  width: 95%;
   height: 215px;
   display: flex;
   align-items: center; /* 하위 요소들 수직 가운데정렬 */
@@ -12,7 +12,11 @@ header  {
 }
 
 fieldset {
-  border: none; /* 기본 border 없애기(이 코드를 지우고 기본 border를 확인해보세요) */
+  border: none;  /* 기본 border 없애기(이 코드를 지우고 기본 border를 확인해보세요) */
+  /* margin: auto;  */
+  margin-left: 45%;
+  margin-top: -3%;
+  position: absolute; 
 }
 .visually-hidden {
   position: absolute !important;
@@ -36,15 +40,18 @@ fieldset {
   text-decoration: none;
 }
 .img_logo {	/* 로고이미지 파일 조정 */
-  margin-left: 400px;
+  margin-left: 25%;
+  margin-top: -3.5%;
   width: 220px;
   height: 65px;
+  position: absolute;
+/* display: inline-block; */
 }
 .search_box {	/* 검색창 바깥틀 */
   width: 520px;
   height: 50px;
   border: 2px solid #6e58fe;
-  display: flex;
+  display: inline-flex;
   align-items: center;
 }
 .search_box input {
@@ -66,6 +73,10 @@ fieldset {
   background: #6e58fe;
   color: #ffffff;
 }
+
+
+
+
 /* nav */
 header > nav {	/* 헤더 네비 간격 조정 */
   width: 100%;

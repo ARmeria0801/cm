@@ -795,9 +795,6 @@ public class SellerController {
 		int answer = goodsQnaService.getGoodsQnaAnswer(gdsqna_num);
 		model.addAttribute("answer", answer);
 		
-		// 문의확인 업데이트
-		goodsQnaService.updateCheckQna(gdsqna_num);
-		
 		// 문의 확인하기
 		GoodsQnaVO goodsquestion = goodsQnaService.getGoodsQuestionDetail(gdsqna_num);
 		model.addAttribute("goodsquestion", goodsquestion);
@@ -893,9 +890,9 @@ public class SellerController {
 		
 		// 주문 상세정보의 ord_gdsoption 으로 옵션정보 불러오기
 		OptionVO option = optionService.getoption(order.getOpt_num());
-		
+
 		// 상품 상세정보의 deltem_num 으로 배송탬플릿 정보 불러오기
-		DeliveryTemplateVO deliverytemplate = deliveryTemplateService.getTemplate(goods.getDeltem_num());
+//		DeliveryTemplateVO deliverytemplate = deliveryTemplateService.getTemplate(goods.getDeltem_num());
 		
 		// 주문 상세정보의 mem_num으로 구매자 상세정보 불러오기
 		MemberVO member = memberService.getmemberinfo(order.getMem_num());
@@ -907,11 +904,11 @@ public class SellerController {
 		ModelAndView sellerorderdetailM = new ModelAndView("seller/sellerorderdetail");
 		sellerorderdetailM.addObject("page", page);
 		sellerorderdetailM.addObject("order", order);
-		sellerorderdetailM.addObject("goods", goods);
-		sellerorderdetailM.addObject("option", option);
-		sellerorderdetailM.addObject("deliverytemplate", deliverytemplate);
-		sellerorderdetailM.addObject("member", member);
-		sellerorderdetailM.addObject("deliveryAddress", deliveryAddress);
+//		sellerorderdetailM.addObject("goods", goods);
+//		sellerorderdetailM.addObject("option", option);
+//		sellerorderdetailM.addObject("deliverytemplate", deliverytemplate);
+//		sellerorderdetailM.addObject("member", member);
+//		sellerorderdetailM.addObject("deliveryAddress", deliveryAddress);
 		
 		return sellerorderdetailM;
 	}
@@ -958,7 +955,7 @@ public class SellerController {
 	}
 	
 	// 후기 상세페이지 불러오기
-	@RequestMapping(value = "/showsellerreviewdetail")
+	@RequestMapping(value = "/showreviewdetail")
 	public String reviewdetail(@RequestParam("rev_num") int rev_num, Model model) throws Exception {
 		
 		// 받은 후기번호로 상세정보 구해오기

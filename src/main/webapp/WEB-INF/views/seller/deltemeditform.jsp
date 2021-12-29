@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<link rel="stylesheet" href="<c:url value='/resources/css/seller/sellerdeliverytemplate.css'/>">
 <script>
 //우편번호, 주소 Daum API
 function openDaumPostcode() {
@@ -23,10 +24,12 @@ function openDaumPostcode() {
 </script>
 </head>
 <body>
-
+<%@ include file="../layout/sellerSidebar.jsp" %>
+<div class="main">
+	<br>
 	<form method="post" action="<%=request.getContextPath()%>/deltemedit">
 		<input type="hidden" id="deltem_num" name="deltem_num" value="${gettemplate.deltem_num}">
-		<table>
+		<table border="1" id="customers">
 			<tr>
 				<th>배송 탬플릿 명</th>
 				<td><input type="text" id="deltem_name" name="deltem_name" value="${gettemplate.deltem_name}" ></td>
@@ -63,7 +66,7 @@ function openDaumPostcode() {
 				<th>반품/교환 배송지 <br>우편번호</th>
 				<td><input name="deltem_repost" id="deltem_repost" size="5"
 						class="input_box" readonly onclick="post_search()"  value="${gettemplate.deltem_repost}" /> 
-					<input type="button" value="우편번호 찾기" class="input_button" onclick="openDaumPostcode()" />
+					<button type="button" onclick="openDaumPostcode()">우편번호 찾기</button>
 				</td>
 			</tr>
 			<tr>
@@ -78,9 +81,11 @@ function openDaumPostcode() {
 					class="input_box" value="${gettemplate.deltem_readd2}" /></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><input type="submit" value="수정하기"></td>
+				<td colspan="2" align="center">
+				<input type="submit" id="savebutton" name="savebutton" value="템플릿 수정"></td>
 			</tr>
 		</table>
 	</form>
+ </div>
 </body>
 </html>

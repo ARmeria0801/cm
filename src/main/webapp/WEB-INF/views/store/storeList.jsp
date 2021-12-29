@@ -92,7 +92,7 @@
 										<li>
 											<div class="item">
 												<div class="thumb">
-													<a href="./storeSelect?gds_num=${list.gds_num}" class="img" style="background: url('../resources/images/goodsimage/${list.gds_thumbnail}') center center no-repeat;"></a>
+													<a href="./storeSelect?gds_num=${list.gds_num}&curPage=${pager.curPage}" class="img" style="background: url('../resources/images/goodsimage/${list.gds_thumbnail}') center center no-repeat;"></a>
 													<div class="exp_area">
 														<div class="util_bx">
 															<a class="btn_category_product_cart">
@@ -125,25 +125,21 @@
 							</div>
 							<div class="layout-pagination">
 								<div class="pagediv">
-									<a href="" class="layout-pagination-button layout-pagination-first-page">맨 처음 페이지로 가기</a>
-									<a href="" class="layout-pagination-button layout-pagination-prev-page">이전 페이지로 가기</a>
-									<span>
-										<strong class="layout-pagination-button layout-pagination-number active">1</strong>
-									</span>
-									<span>
-										<a class="layout-pagination-button layout-pagination-number">2</a>
-									</span>
-									<span>
-										<a class="layout-pagination-button layout-pagination-number">3</a>
-									</span>
-									<span>
-										<a class="layout-pagination-button layout-pagination-number">4</a>
-									</span>
-									<span>
-										<a class="layout-pagination-button layout-pagination-number">5</a>
-									</span>
-									<a href="" class="layout-pagination-button layout-pagination-next-page">다음 페이지로 가기</a>
-									<a href="" class="layout-pagination-button layout-pagination-last-page">맨 끝 페이지로 가기</a>
+									<a href="./storeList?curPage=1" class="layout-pagination-button layout-pagination-first-page">맨 처음 페이지로 가기</a>
+									<a href="./storeList?curPage=${pager.curPage-1}" class="layout-pagination-button layout-pagination-prev-page">이전 페이지로 가기</a>
+									
+									<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+										<span>
+											<c:if test="${pager.curPage == i}">
+												<strong class="layout-pagination-button layout-pagination-number active">${i}</strong>
+											</c:if>
+											<c:if test="${pager.curPage != i}">
+												<a href="./storeList?curPage=${i}" class="layout-pagination-button layout-pagination-number">${i}</a>
+											</c:if>
+										</span>
+									</c:forEach>
+									<a href="./storeList?curPage=${pager.curPage+1}" class="layout-pagination-button layout-pagination-next-page">다음 페이지로 가기</a>
+									<a href="./storeList?curPage=${pager.totalPage}" class="layout-pagination-button layout-pagination-last-page">맨 끝 페이지로 가기</a>
 								</div>
 							</div>
 						</div>

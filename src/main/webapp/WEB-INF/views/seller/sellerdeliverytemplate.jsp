@@ -9,12 +9,16 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <!-- 우편번호 API, 배송템플릿 유효성검사 -->
+<link rel="stylesheet" href="<c:url value='/resources/css/seller/sellerdeliverytemplate.css'/>">
 <script src="<%=request.getContextPath()%>/resources/js/sellerjs/sellerdeliverytemplate.js"></script>
 </head>
 <body>
+<%@ include file="../layout/sellerheader.jsp" %>
+<%@ include file="../layout/sellerSidebar.jsp" %>
+<div class="main">
 	<br>
 	<form method="post" action="<%=request.getContextPath()%>/deliverytemplateupload" onSubmit="return template_check()">
-		<table>
+		<table border="1" id="customers">
 			<tr>
 				<th>배송 템플릿 명</th>
 				<td><input type="text" id="deltem_name" name="deltem_name"></td>
@@ -49,7 +53,7 @@
 				<th>반품/교환 배송지 <br>우편번호</th>
 				<td><input name="deltem_repost" id="deltem_repost" size="5"
 					class="input_box" readonly onclick="post_search()" /> 
-					<input type="button" value="우편번호 찾기" class="input_button" onclick="openDaumPostcode()" />
+					<button type="button" onclick="openDaumPostcode()">우편번호 찾기</button>
 				</td>
 			</tr>
 			<tr>
@@ -69,5 +73,6 @@
 			</tr>
 		</table>
 	</form>
+	</div>
 </body>
 </html>

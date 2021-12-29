@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="<c:url value='/resources/css/seller/sellerdeliverytemplatelist.css'/>">
 <script>
 	function del(seq) {
 		var chk = confirm("정말 삭제하시겠습니까?");
@@ -17,7 +18,11 @@
 </script>
 </head>
 <body>
-<table border="1">
+<%@ include file="../layout/sellerheader.jsp" %>
+<%@ include file="../layout/sellerSidebar.jsp" %>
+<div class="main">
+<h1>배송지 리스트</h1>
+<table border="1" id="customers">
 	<tr align="center">
 		<th>번호</th>
 		<th>배송 탬플릿 명</th>
@@ -47,11 +52,13 @@
 				<td>${deltemlist.deltem_repost }</td>
 				<td>${deltemlist.deltem_readd1 }</td>
 				<td>${deltemlist.deltem_readd2 }</td>
-				<td><input type="button" value="수정" onclick="location='deltemeditform?deltem_num=${deltemlist.deltem_num}'">
-				    <input type="button" value="삭제" onclick="del(${deltemlist.deltem_num})"></td>
+				<td>
+				<button type="button" onclick="location='deltemeditform?deltem_num=${deltemlist.deltem_num}'">수정</button>
+				<button type="button" onclick="del(${deltemlist.deltem_num})">삭제</button>
 			</tr>
 		</c:forEach>
 	
 </table>
+</div>
 </body>
 </html>

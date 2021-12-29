@@ -18,7 +18,7 @@
   	</select>
   
   <!-- 주문내역 상세 -->
-  <!-- 판매자별 정산리스트  출력 -->
+  <!-- 주문자별 주문리스트  출력 -->
 	<select id="history_detail" resultType="order" parameterType="int">
 		select * from project.order
 		<!-- where sel_num=${sel_num} -->

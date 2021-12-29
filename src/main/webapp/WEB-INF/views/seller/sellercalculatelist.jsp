@@ -9,8 +9,8 @@
 <title>정산리스트</title>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<link rel="stylesheet" href="<c:url value='/resources/css/seller/sellercalculatelist.css'/>">
 <script src="<%=request.getContextPath()%>/resources/js/sellerjs/sellercalculatelistjs.js"></script>
-
 
 <style type="text/css">
  	 table {width:900px;}  
@@ -23,9 +23,11 @@
 </style>
 </head>
 <body>
-
-	<div>
-		<table class="caltable" border="1">
+<%@ include file="../layout/sellerheader.jsp" %>
+<%@ include file="../layout/sellerSidebar.jsp" %>
+	<div class="main">
+	 <h1>정산리스트</h1>
+		<table id="caltable" border="1">
 			<tr>
 				<th>정산번호</th>
 				<th>주문번호</th>
@@ -66,16 +68,19 @@
 					</c:if> <fmt:formatDate value="${clist.clcln_comdate}"
 							pattern="yyyy-MM-dd HH:mm:ss" /></td>
 					<td>${clist.clcln_status}</td>
-					<td><input type="button" onclick="showcalculdetail(${clist.clcln_num})" value="상세페이지 보기"></td>
+					<td>
+					<button type="button" onclick="showcalculdetail(${clist.clcln_num})">상세페이지 보기</button>
+					</td>
 				</tr>
-				<tr id="calculdetail${clist.clcln_num}" class="hide">
+				<tr>
+					<td colspan="10" >
+						<div id="calculdetail${clist.clcln_num}" class="hide"></div>
+					</td>
 				</tr>
-				<!-- <tr>
-					
-				</tr> -->
 
 			</c:forEach>
 		</table>
+		<br>
 		<div id="bbslist_paging">
 			<c:if test="${page <=1 }">
 				[이전]&nbsp;

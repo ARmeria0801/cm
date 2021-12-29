@@ -10,10 +10,12 @@
 <link rel="stylesheet" href="<c:url value='/resources/css/seller/sellerorderlist.css'/>">
 </head>
 <body>
+<%@ include file="../layout/sellerheader.jsp" %>
 <%@ include file="../layout/sellerSidebar.jsp" %>
 <div class="main">
-	<table border="1">
-		<tr style="text-align: center;">
+	<h1>판매자 주문내역</h1>
+	<table border="1" id="customers">
+		<tr>
 			<th>주문번호</th>
 			<th colspan="2">상품이름</th>
 			<th>옵션</th>
@@ -37,8 +39,8 @@
 					<img src="<%=request.getContextPath() %>/resources/images/thumbnailimage/${order.gds_thumbnail}" height="100" width="100" />
 				</td>
 				<td style="border-left: none;">
-					<a href="sellerorderdetail?ol_num=${order.ol_num}&page=${page}">${order.gds_name}<br><br></a>
-					<div style="text-align: right"> <a href="goodsupdate?&gds_num=${order.gds_num}">상품 수정하기</a></div>
+					<a href="sellerorderdetail?ord_num=${order.ord_num}&page=${page}">${order.gds_name}<br><br></a>
+					<button type="button" onclick="location.href='goodsupdate?&gds_num=${order.ord_gdsnum}'">상품 수정하기</button>
 				</td>
 				<td>
 					<c:choose>	

@@ -32,7 +32,7 @@ public class GoodsQnaDAO {
 		return sqlSession.selectOne("goodsQnaMapper.select_goodsqna_question", gdsqna_num);
 	}
 
-	// 답변글 가져오기(ref)
+	// 답변글 가져오기
 	public GoodsQnaVO getGoodsAnswerDetail(int gdsqna_num) {
 		return sqlSession.selectOne("goodsQnaMapper.select_goodsqna_answer", gdsqna_num);
 	}
@@ -77,5 +77,4 @@ public class GoodsQnaDAO {
 	public List<GoodsQnaVO> getMainGoodsQnaList(String sel_name) {
 		return sqlSession.selectList("goodsQnaMapper.select_main_goodsqna_list", sel_name);
 	}
-
 }

@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+#myreviewlist{
+	
+ 	margin-left: 250px; 
+    margin-right: 15px; 
+    margin-bottom: 150px; 
+}
+
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  border: none;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  text-align: center;
+  align-content: center;
+  font-size: 12px;
+}
+
+#customers tr:nth-child(even){background-color: #ffffff;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #808080;
+  color: white;
+}
+
+
+#customers a{
+	color: #000;
+	text-decoration: none;
+}
+
+#customers a:hover{
+	color: #808080;
+}
+
+#customers button{
+	 background-color:#808080;
+	 color: #ffffff;
+	 border-radius: 3px;
+	 border: none;  /* 버튼 테두리 */
+}
+
+#customers button:hover{	/* 버튼을 마우스에 올렸을때 */
+	background-color: #ffffff;
+	color: #808080;
+}
+
+#revlist_paging{
+	text-align: center;
+}
+
+#revlist_paging a {
+ 	display:inline-block;
+	width:35px;
+	height:28px;
+	line-height:25px;
+	text-align:center;
+	background-color:#fff;
+	font-size:10px;
+	color:#000;
+	text-decoration:none;
+}
+
+#revlist_paging a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+#revlist_paging a:hover:not(.active) {background-color: #ddd;}

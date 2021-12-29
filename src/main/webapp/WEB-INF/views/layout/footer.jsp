@@ -46,7 +46,7 @@
 				<br>
 				법인명 (상호): 주식회사 중앙마켓 <span class="bar">I</span> 사업자등록번호: 111-11-11111
 				<a href="#" target="_blank" class="link">사업자정보 확인</a> <br /> 통신판매업 : 제
-				2021-서울강남-11111 호 <span class="bar">I</span> 개인정보보호책임자 : 이원준 <br />
+				2021-서울강남-11111 호 <span class="bar">I</span> 개인정보보호책임자 : 스노든 <br />
 				주소 : 서울시 도산대로 16길 20, 이래빌딩 B1 ~ 4F <span class="bar">I</span> 대표이사 :
 				홍길동 <br /> 제휴문의 : <a href="#" class="link">business@email.com</a>
 				<br /> 채용문의 : <a href="#" class="link">recruit@email.com</a>

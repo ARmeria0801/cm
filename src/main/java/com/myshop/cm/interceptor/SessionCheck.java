@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+//로그인 체크 세션
 public class SessionCheck extends HandlerInterceptorAdapter{
 	// preHandle(request,response,handler)메소드
 		// 1.Controller에서 요청(*.nhn)을 받기 전에  preHandle()가 호출되어 가로채는 역할로 사용

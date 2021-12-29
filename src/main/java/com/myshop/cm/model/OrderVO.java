@@ -59,6 +59,5 @@ public class OrderVO {
 	public void setOrd_date(Timestamp ord_date) {
 		this.ord_date = ord_date;
 	}
-	
 
 }

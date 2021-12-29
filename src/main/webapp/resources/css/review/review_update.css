@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+
+#bbswrite_wrap{
+	margin-left: 605px;
+	margin-right: 30px; 
+}
+
+#bbswrite_title{
+	text-align: center;
+}
+
+
+
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width:500px;
+  height: 200px;
+}
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  font-size: 12px;
+  text-align: center;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #808080;
+  color: white;
+}
+
+
+#customers a{
+	color: #000;
+	text-decoration: none;
+}
+
+#customers a:hover{
+	color: #808080;
+}
+
+#bbswrite_wrap button{
+	 display:inline-block;
+	 margin-left: 170px;
+	 background-color:#808080;
+	 color: #ffffff;
+	 border-radius: 3px;
+	 border: 1px solid #000;  /* 버튼 테두리 */
+}
+
+#bbswrite_wrap button:hover{	/* 버튼을 마우스에 올렸을때 */
+	background-color: #ffffff;
+	color: #808080;
+}

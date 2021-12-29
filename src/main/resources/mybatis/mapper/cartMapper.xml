@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cartMapper">
+	<resultMap type="CartVO" id="cartResult">
+		<id column="cart_num" property="cart_num"/>
+		<result column="mem_num" property="mem_num"/>
+		<result column="opt_num" property="opt_num"/>
+		<result column="cart_count" property="cart_count"/>
+		<result column="cart_date" property="cart_date"/>
+		<association property="goodsVO" javaType="GoodsVO">
+			<id column="gds_num" property="gds_num"/>
+			<result column="gds_name" property="gds_name"/>
+			<result column="gds_price" property="gds_price"/>
+			<result column="gds_thumbimg" property="gds_thumbimg"/>
+			<association property="deliveryTemplateVO" javaType="DeliveryTemplateVO">
+				<id column="deltem_num" property="deltem_num"/>
+				<result column="deltem_delfee" property="deltem_delfee"/>
+				<result column="deltem_freedel" property="deltem_freedel"/>
+			</association>
+		</association>
+		<association property="optionVO" javaType="OptionVO">
+			<id column="opt_num" property="opt_num"/>
+			<result column="gds_num" property="gds_num"/>
+			<result column="opt_1stname" property="opt_1stname"/>
+			<result column="opt_1stval" property="opt_1stval"/>
+			<result column="opt_2ndname" property="opt_2ndname"/>
+			<result column="opt_2ndval" property="opt_2ndval"/>
+			<result column="opt_count" property="opt_count"/>
+		</association>
+	</resultMap>
+
+	<!-- 카트 목록 -->
+	<select id="cartList" resultMap="cartResult" parameterType="CartVO">
+		select C.*, G.gds_num, G.gds_name, G.gds_price, G.gds_thumbnail, O.opt_1stname, O.opt_1stval, O.opt_2ndname, O.opt_2ndval, O.opt_count, DT.deltem_num, DT.deltem_delfee, DT.deltem_freedel
+			from cart C
+			left outer join project.option O
+				on C.opt_num = O.opt_num
+		    left outer join goods G
+		    	on O.gds_num = G.gds_num
+		    left outer join deliverytemplate DT
+		    	on G.deltem_num = DT.deltem_num
+		    where C.mem_num = #{mem_num}
+		    order by DT.deltem_num desc, C.cart_num desc
+	</select>
+	
+	<!-- 동일 상품 존재 여부 조회 -->
+	<select id="cartSelect" resultType="CartVO" parameterType="CartVO">
+		select * from cart
+		where opt_num = #{opt_num} and mem_num = #{mem_num}
+	</select>
+	
+	<!-- 카트 담기 -->
+	<insert id="cartInsert" parameterType="CartVO">
+		insert into cart
+		values(0, #{mem_num}, #{opt_num}, #{cart_count}, now(), #{cart_viewyn})
+	</insert>
+	
+	<!-- gds_viewyn 찾아오기 -->
+	<select id="selectGdsviewyn" resultType="String" parameterType="CartVO">
+		select gds_viewyn from goods
+		where gds_num = #{gds_num}
+	</select>
+	
+	<!-- 카트 수량 수정 -->
+	<update id="cartUpdate" parameterType="CartVO">
+		update cart
+		set cart_count=#{cart_count}, cart_date=now()
+		where cart_num=#{cart_num} and mem_num = #{mem_num}
+	</update>
+	
+	<!-- 카트 삭제 -->
+	<delete id="cartDelete" parameterType="CartVO">
+		delete from cart
+		where cart_num = #{cart_num} and mem_num = #{mem_num}
+	</delete>
+</mapper>

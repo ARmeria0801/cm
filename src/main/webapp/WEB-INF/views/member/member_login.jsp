@@ -42,15 +42,14 @@
       <input type="password" class="form-control" id="mem_pass" name="mem_pass" placeholder="비밀번호" maxlength="20">
     </div>
     	<div class="form-group">
-      	<input type="checkbox">&nbsp;ID기억하기
-      	<a href="" > 아이디 찾기</a> | <a href="member_passFind">비밀번호 찾기</a>
+      	<a href="member_idFind" > 아이디 찾기</a> | <a href="member_passFind">비밀번호 찾기</a>
     	</div>
       <div class="form-group">
-    <input type="submit" class="btn btn-default form-control" value="로그인">
+    <input type="submit" class="btn btn-default form-control" style="background: #6e58fe; color:white; border: none" value="로그인">
       </div>
       <div class="form-group">
     <input type="button" class="btn btn-default form-control"
-onClick="location.href='member_join'" value="회원가입">
+onClick="location.href='<%=request.getContextPath() %>/member_join'" style="background: #6e58fe; color:white; border: none" value="회원가입">
 	  </div>
 
  	</table>

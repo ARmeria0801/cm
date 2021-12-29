@@ -14,7 +14,7 @@
 <body>
 <!-- header -->
 <header>
-	<c:import url="../layout/header.jsp" />
+	<%-- <c:import url="../layout/header.jsp" /> --%>
 </header>
 <!-- section -->
 <section>
@@ -28,7 +28,7 @@
 					</li>
 					<li class="step2">
 						<span>STEP 02</span>
-						<strong>결제하기</strong>
+						<strong>주문/결제하기</strong>
 					</li>
 					<li class="step3">
 						<span>STEP 03</span>
@@ -39,7 +39,12 @@
 			
 			<div class="cart_list_wrap">
 				<p class="cart_all_wrap">
+				<c:if test="${cartList eq null}">
+					<input type="checkbox" id="checkbox_all" class="custom_checkbox_all">
+				</c:if>
+				<c:if test="${cartList ne null}">
 					<input type="checkbox" id="checkbox_all" class="custom_checkbox_all" checked="checked">
+				</c:if>
 					<label for="checkbox_all">
 						전체선택
 					</label>
@@ -50,6 +55,13 @@
 					<strong class="checkbox_select">선택</strong>
 				</p>
 <!-- ------------------------------------------------------------ -->
+			<c:if test="${cartList eq null}">
+				<div class="inner_empty">
+					<span class="bg"></span>
+					<p class="txt">장바구니에 담긴 상품이 없습니다</p>
+				</div>
+			</c:if>
+			
 			<form action="../pay/marketPay" method="post" id="frm">
 			
 				<ul class="cart_list_style">
@@ -63,27 +75,32 @@
 							
 							<label for="checkbox${cartList.cart_num}"></label>
 							
-							<a href="storeSelect?store_num=${cartList.store_num}" class="product_info_img">
-								<img alt="${cartList.store_name}" src="../resources/upload/store/th/${cartList.store_thumbimg}">
-								<strong class="product_info_name">${cartList.store_name}</strong>
-								<input type="hidden" class="sname" id="input_sname${cartList.cart_num}" value="${cartList.store_name}">
-								<span class="product_info_note">${cartList.store_note}</span>
+							<a href="../store/storeSelect?gds_num=${cartList.gds_num}" class="product_info_img">
+								<img alt="${cartList.gds_name}" src="../resources/images/thumbnailimage/${cartList.gds_thumbimg}">
+								<strong class="product_info_name">${cartList.gds_name}</strong>
+								<input type="hidden" class="sname" id="input_sname${cartList.cart_num}" value="${cartList.gds_name}">
+								<c:if test="${cartList.optionVO.opt_1stname ne null}">
+									<span class="product_info_note">${cartList.optionVO.opt_1stname} : ${cartList.optionVO.opt_1stval}</span>
+								</c:if>
+								<c:if test="${cartList.optionVO.opt_2ndname ne null}">
+									<span class="product_info_note">${cartList.optionVO.opt_2ndname} : ${cartList.optionVO.opt_2ndval}</span>
+								</c:if>
 							</a>
 							
 							<div class="product_info_onePrice_wrap">
-								<span class="product_info_onePrice"><fmt:formatNumber value="${cartList.store_price}" pattern="###,###,###" /></span>
-								<input type="hidden" class="sprice" id="input_sprice${cartList.cart_num}" value="${cartList.store_price}">
+								<span class="product_info_onePrice"><fmt:formatNumber value="${cartList.gds_price}" pattern="###,###,###" /></span>
+								<input type="hidden" class="sprice" id="input_sprice${cartList.cart_num}" value="${cartList.gds_price}">
 							</div>
 							
 							<div class="product_info_amount_wrap">
-								<span class="product_info_count" id="count${cartList.cart_num}">${cartList.cart_amount}</span>
-								<input type="hidden" class="camount" id="input_camount${cartList.cart_num}" value="${cartList.cart_amount}">
+								<span class="product_info_count" id="count${cartList.cart_num}">${cartList.cart_count}</span>
+								<input type="hidden" class="camount" id="input_camount${cartList.cart_num}" value="${cartList.cart_count}">
 								<a href="#none" class="btn_amount_plus btn_amount_plus${cartList.cart_num}">+</a>
 								<a href="#none" class="btn_amount_minus btn_amount_minus${cartList.cart_num}">-</a>
 								<a href="#none" class="btn_amount_change btn_amount_change${cartList.cart_num}">변경</a>
 							</div>
 							
-							<span class="product_info_price product_info_price${cartList.cart_num}"><fmt:formatNumber value="${cartList.store_price*cartList.cart_amount}" pattern="###,###,###" /></span>
+							<span class="product_info_price product_info_price${cartList.cart_num}"><fmt:formatNumber value="${cartList.gds_price*cartList.cart_count}" pattern="###,###,###" /></span>
 							
 						<script type="text/javascript">
 							//,찍어주는 정규식 함수
@@ -131,7 +148,7 @@
 							});
 							//수량 박스 변경
 							$('.btn_amount_change'+${cartList.cart_num}).click(function() {
-								var cart_amount = $('#count'+${cartList.cart_num}).text();
+								var cart_count = $('#count'+${cartList.cart_num}).text();
 								var cart_num = ${cartList.cart_num};
 								
 								$.ajax({
@@ -139,18 +156,18 @@
 									type: "post",
 									async: false,
 									data: {
-										cart_amount: cart_amount,
+										cart_count: cart_count,
 										cart_num: cart_num
 									},
 									success: function(data) {
 										//alert(data);
 										if(data>0){
 											alert("수량이 변경되었습니다.");
-											var price = cart_amount * ${cartList.store_price};
+											var price = cart_count * ${cartList.gds_price};
 											price = addComma(price);
 											$('.product_info_price'+${cartList.cart_num}).text(price);
 											
-											$('#input_camount'+${cartList.cart_num}).val(cart_amount);
+											$('#input_camount'+${cartList.cart_num}).val(cart_count);
 											calTotal();
 										}else {
 											alert("수량 변경 실패");
@@ -171,7 +188,7 @@
 							$('#btn_now'+${cartList.cart_num}).click(function() {
 								$('#input_sname'+${cartList.cart_num}).attr("name", "sname");
 								$('#input_sprice'+${cartList.cart_num}).attr("name", "sprice");
-								$('#input_camount'+${cartList.cart_num}).attr("name", "camount");
+								$('#input_camount'+${cartList.cart_num}).attr("name", "scount");
 							});	
 						</script>
 <!-- ------------------------------------------------------------ -->
@@ -196,7 +213,7 @@
 										success: function(result) {
 											if(result == 1){
 												alert("삭제되었습니다.");
-												location.href = "cartList";
+												location.reload();
 											}else {
 												alert("삭제 실패");
 											}
@@ -211,7 +228,7 @@
 					
 						</li>
 					
-					<c:set var="sum" value="${sum + (cartList.store_price*cartList.cart_amount)}" />	
+					<c:set var="sum" value="${sum + (cartList.gds_price*cartList.cart_count)}" />	
 						
 					</c:forEach>
 				</ul>
@@ -234,7 +251,7 @@
 				//총액 계산 함수
 				function calTotal() {
 					var price = 0;
-					var amount = 0;
+					var count = 0;
 					
 					$('input[class="cart_checkbox"]:checked').each(function(i) {
 						
@@ -341,7 +358,7 @@
 					<thead>
 						<tr>
 							<th>총 상품 금액</th>
-							<th>할인 금액</th>
+							<th>총 배송비</th>
 							<th>총 결제 예정 금액</th>
 						</tr>
 					</thead>
@@ -373,7 +390,7 @@
 			
 				<div class="btn_wrap">
 					<input type="hidden" class="">
-					<button class="btn_buy">결제하기</button>
+					<button class="btn_buy">주문하기</button>
 				</div>
 				
 			<script type="text/javascript">
@@ -399,18 +416,16 @@
 			
 				$('.btn_wrap .btn_buy').click(function() {
 					if($('.cart_checkbox:checked').length > 0){
-						
-							if($('.cart_checkbox:checked')){
-								$('.cart_checkbox:checked').parent().children().find('input[class="sname"]').attr("name", "sname");
-								$('.cart_checkbox:checked').parent().children().find('input[class="sprice"]').attr("name", "sprice");
-								$('.cart_checkbox:checked').parent().children().find('input[class="camount"]').attr("name", "camount");
-							}else {
-								$('input[class="sname"]').removeAttr("name");
-								$('input[class="sprice"]').removeAttr("name");
-								$('input[class="camount"]').removeAttr("name");
-							}
-						
-							$("#frm").submit(); //sname, sprice, camount
+						if($('.cart_checkbox:checked')){
+							$('.cart_checkbox:checked').parent().children().find('input[class="sname"]').attr("name", "sname");
+							$('.cart_checkbox:checked').parent().children().find('input[class="sprice"]').attr("name", "sprice");
+							$('.cart_checkbox:checked').parent().children().find('input[class="camount"]').attr("name", "camount");
+						}else {
+							$('input[class="sname"]').removeAttr("name");
+							$('input[class="sprice"]').removeAttr("name");
+							$('input[class="camount"]').removeAttr("name");
+						}
+						$("#frm").submit(); //sname, sprice, camount
 					}else{
 						alert("상품을 선택하세요.");
 					}

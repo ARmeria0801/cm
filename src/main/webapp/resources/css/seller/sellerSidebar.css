@@ -7,10 +7,18 @@
   background: #808080;
   overflow-x: hidden;
   text-align: center;
-  position: fixed;
-  top: 0px;
+  position: absolute;
+  top: 235px;
   left: 0px;
+  padding-bottom:90%;
+  color: white;
+  cursor:default; 
+  overflow-y:hidden;
+  z-index: 100;
+
+  
 }
+
 
 .mypagesidenav a {
   padding: 6px 8px 6px 16px;
@@ -73,3 +81,5 @@
   color: #666;
   margin-right: 5px;
 }	
+
+

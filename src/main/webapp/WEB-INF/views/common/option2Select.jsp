@@ -9,7 +9,7 @@
 			<label class="text text2">선택</label>
 			<ul class="option-list">
 				<c:forEach	items="${list}" var="opt">
-					<li class="option option2">${opt.opt_2ndval}</li>
+					<li class="option option2" data-optnum="${opt.opt_num}">${opt.opt_2ndval}</li>
 				</c:forEach>
 			</ul>
 		</div>
@@ -25,6 +25,14 @@
 	// option 태그 클릭 시, 선택한 값으로 변경 이벤트 함수
 	$('.option2').click(function () {
 		$(".text2").html($(this).html());
+		
+		opt_num = $(this).attr('data-optnum');
+		//alert(opt_num);
+		$('.numCount').val(1);
+		
+		var price = ${gds_price};
+		price = addComma(price);
+		$('.totalPrice').text(price);
 	});
 </script>
 

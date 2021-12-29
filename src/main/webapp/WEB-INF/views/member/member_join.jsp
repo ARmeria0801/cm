@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,21 +28,6 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></scri
 	}
 </script>
 <script type="text/javascript">
-	
-/* 	//모든 공백 체크 정규식
-	var empJ = /\s/g;
-	//아이디 정규식
-	var idJ = /^[a-z0-9][a-z0-9_\-]{4,12}$/;
-	// 비밀번호 정규식
-	var pwJ = /^[A-Za-z0-9]{4,12}$/;
-	// 이름 정규식
-	var nameJ = /^[가-힣]{2,6}$/;
-	// 이메일 검사 정규식
-	var mailJ = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-	
-	/^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$;
-	
-	var address = $('#deladd_add1'); */
 	
 	$(document).ready(function() {
 		//주소 뭐꼬
@@ -358,7 +344,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></scri
 				  <span>만 14세 이상입니다.&nbsp;<strong>(필수)</strong></span><br><br>
 				
 					<div class="form-group text-center">
-					<button type="submit" class="btn btn-primary form-control">회원가입</button>
+					<button type="submit" class="btn btn-primary form-control" style="background: #6e58fe; color:white; border: none">회원가입</button>
 				</div>
 				
 <!--------------------------------------약관 모달 창 개길어------------------------------------------------------------------------------------------>

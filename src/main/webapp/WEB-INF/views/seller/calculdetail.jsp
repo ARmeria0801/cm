@@ -11,7 +11,7 @@
 <body>
 	<table>
 		<tr>
-			<th colspan="10">
+			<td colspan="10">
 				${calculate.clcln_num}
 				${calculate.ord_num}
 				${calculate.sel_num}
@@ -42,7 +42,7 @@
 				${order.ol_count}
 				<%-- ${order.deltem_delfee} --%>
 				${order.ord_request}
-			</th>
+			</td>
 		</tr>
 	</table>
 </body>

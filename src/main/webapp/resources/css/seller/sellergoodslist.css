@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+
+.main{
+	margin-top: 89px;
+	margin-left: 300px; 
+	margin-right: 30px; 
+}
+
+#goodslist_c{
+	text-align: right;
+}
+
+#goodslist_t {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width:100%;
+}
+#goodslist_t td, #goodslist_t th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  font-size: 12px;
+  text-align: center;
+}
+
+#goodslist_t tr:nth-child(even){background-color: #ffffff;}
+
+#goodslist_t tr:hover {background-color: #ddd;}
+
+#goodslist_t th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #808080;
+  color: white;
+}
+
+#goodslist_t a{
+	color: #000;
+	text-decoration: none;
+}
+
+#goodslist_t a:hover{
+	color: #808080;
+}
+
+#goodslist_t button{
+	 background-color:#808080;
+	 color: #ffffff;
+	 margin: auto;
+	 border-radius: 3px;
+	 border: 1px solid #000;  /* 버튼 테두리 */
+}
+
+#goodslist_t button:hover{	/* 버튼을 마우스에 올렸을때 */
+	background-color: #ffffff;
+	color: #808080;
+}
+
+#bbslist_paging{
+	text-align: center;
+}
+
+/* #bbslist_paging a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+#bbslist_paging a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+#bbslist_paging a:hover:not(.active) {background-color: #ddd;}
+ */

@@ -4,6 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="storeMapper">
+	<!-- <select id="storeReviewList" resultType="ReviewVO">
+		
+	</select> -->
+	
 	<sql id="cateKind">
 		<choose>
 			<when test='cate_kind == "l"'>
@@ -41,6 +45,12 @@
 		<result column="gds_ears" property="gds_ears"/>
 		<result column="gds_viewyn" property="gds_viewyn"/>
 		<result column="gds_delyn" property="gds_delyn"/>
+		<association property="deliveryTemplateVO" javaType="DeliveryTemplateVO">
+			<id column="deltem_num" property="deltem_num"/>
+			<result column="del_name" property="del_name"/>
+			<result column="deltem_delfee" property="deltem_delfee"/>
+			<result column="deltem_freedel" property="deltem_freedel"/>
+		</association>
 		<collection property="optionVO" javaType="List" ofType="OptionVO">
 			<id column="opt_num" property="opt_num"/>
 			<result column="opt_1stname" property="opt_1stname"/>
@@ -56,17 +66,21 @@
 		from goods
 		<include refid="cateKind"></include> gds_viewyn='y'
 		order by gds_num desc
-		<!-- LIMIT #{startRow}, #{perPage} -->
+		LIMIT #{startRow}, #{perPage}
 	</select>
 	
 	<select id="storeCount" resultType="Integer">
 		select count(gds_num) from goods
+		where gds_viewyn='y'
 	</select>
 	
 	<select id="storeSelect" resultMap="Select" parameterType="GoodsVO">
-		select G.*, O.opt_num, O.opt_1stname, O.opt_1stval, O.opt_2ndval
-		from Goods G left outer join project.option O
-		on G.gds_num = O.gds_num
+		select G.*, DT.del_name, DT.deltem_delfee, DT.deltem_freedel, O.opt_num, O.opt_1stname, O.opt_1stval, O.opt_2ndval
+		from Goods G
+        left outer join DeliveryTemplate DT
+        on G.deltem_num = DT.deltem_num
+        left outer join project.Option O
+        on G.gds_num = O.gds_num
 		where G.gds_num = #{gds_num}
         group by O.opt_1stval
 	</select>

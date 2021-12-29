@@ -1,5 +1,4 @@
 package com.myshop.cm.controller;
-
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletResponse;
@@ -13,10 +12,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myshop.cm.model.DeliveryAddressVO;
 import com.myshop.cm.model.MemberVO;
 import com.myshop.cm.model.SellerVO;
+import com.myshop.cm.service.DeliveryAddressService;
 import com.myshop.cm.service.MemberService;
 
 @Controller
@@ -25,26 +26,8 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	//id유효성 검사 ajax부분 
-	/*
-	 * @RequestMapping(value="/member_idCheck", method=RequestMethod.POST) public
-	 * String member_idcheck(@RequestParam("") String mem_id, Model model) throws
-	 * Exception{
-	 * 
-	 * System.out.println("mem_id:" +mem_id);
-	 * 
-	 * int result = memberService.memberIdCheck(mem_id);
-	 * model.addAttribute("result", result);
-	 * 
-	 * return "member/idCheckResult";
-	} */
-//	@RequestMapping(value="/idCheck", method= RequestMethod.POST)
-//	@ResponseBody
-//	public int idCheck(@RequestParam("mem_id") String mem_id) {
-//		System.out.println("id유효성 컨트롤러");
-//			return memberService.memberIdCheck(mem_id);
-//	}
 	
+	//id유효성 검사 ajax부분 
 	@RequestMapping(value="/idCheck", method= RequestMethod.POST)
 	// @ResponseBody
 	public String idCheck(@RequestParam("mem_id") String mem_id, Model model) {
@@ -54,7 +37,6 @@ public class MemberController {
 		 
 		return "member/idCheckResult";
 	}
-	
 	
 	//회원가입 폼
 	@RequestMapping(value = "/member_join")
@@ -132,7 +114,7 @@ public class MemberController {
 	@RequestMapping(value="/id_find", method=RequestMethod.POST)
 	public String id_find(@RequestParam("mem_name") String mem_name,
 						  @RequestParam("mem_phone") String mem_phone,
-						  HttpSession session,MemberVO member, Model model)throws Exception{
+						  @ModelAttribute MemberVO member,HttpSession session, Model model)throws Exception{
 		int result =0;
 		MemberVO vo = memberService.idFind(mem_name);
 		
@@ -146,11 +128,12 @@ public class MemberController {
 			
 		}else {		//등록된 이름일 경우
 			if(vo.getMem_phone().equals(mem_phone)) {	//핸드폰번호가 일치할때
-				session.setAttribute("mem_name", mem_name);
+				session.setAttribute("mem_id", vo.getMem_id());
 				System.out.println("id찾기 성공");
 				
+				System.out.println(vo.getMem_id());
 				
-				return "member/member_idFind";	//찾은 아이디 출력 페이지 만들기
+				return "member/findIdResult";	//찾은 아이디 출력 페이지 만들기
 				
 			}else {	//핸드폰번호가 불일치할때
 				result = 3;
@@ -159,16 +142,12 @@ public class MemberController {
 				return "member/findIdCheck";
 			}
 		}
-		
 	}
-	
-	
 	//비밀번호 찾기 폼
 	@RequestMapping(value="member_passFind")
 	public String member_passFind() {
 		return "member/member_passFind";
 	}
-	
 	//비밀번호 찾기 완료
 	@RequestMapping(value="pass_find", method=RequestMethod.POST)
 	public String pass_find(@ModelAttribute MemberVO member,
@@ -221,7 +200,6 @@ public class MemberController {
 			return "member/findPassResult";
 		}
 	}
-	
 	//로그아웃
 	@RequestMapping(value="/member_logout")
 	public String logout(HttpSession session) {
@@ -229,37 +207,98 @@ public class MemberController {
 		
 		return "member/member_logout";
 	}
-	//회원정보 수정 폼
-	@RequestMapping(value="/member_update")
-	public String member_update(HttpSession session, Model model) throws Exception {
+	//비밀번호 재확인 폼
+	@RequestMapping(value="/passReCheck")
+	public String passReCheck(MemberVO member,HttpSession session,Model model)throws Exception{
 		
-		//세션 객체 안에 있는 ID정보 저장
-		String mem_id = (String) session.getAttribute("mem_id");
+		//세션 객체 안에 있는id정보 저장
+		String mem_id =(String)session.getAttribute("mem_id");
 		//서비스안의 메서드 호출
-		MemberVO upmv = memberService.loginCheck(mem_id);
-		
-	System.out.println("수정폼 컨트롤");
-		//정보 저장 후 페이지 이동
-		model.addAttribute("upmv", upmv);
-
-		return "member/member_update";
+		MemberVO prmv = this.memberService.loginCheck(mem_id);
+		model.addAttribute("prmv",prmv);
+		return "member/passReCheck";		
 	}
-	//회원정보 수정 저장
-	@RequestMapping(value="/update_ok", method=RequestMethod.POST)
-	public String update_ok(MemberVO member, HttpSession session, Model model) throws Exception {
+	//비밀번호 재확인 저장
+	@RequestMapping(value="/recheck_ok", method=RequestMethod.POST)
+	public String recheck_ok(@RequestParam("mem_pass") String mem_pass,
+							@ModelAttribute MemberVO member, HttpSession session, 
+							Model model)throws Exception {
+
+		String mem_id =(String)session.getAttribute("mem_id");
+		MemberVO prmv = this.memberService.loginCheck(mem_id);
 		
+		if(!prmv.getMem_pass().equals(mem_pass)) {
+			
+			return "member/deleteResult";
+		}else {
+			
+			MemberVO ppmv = new MemberVO();
+			ppmv.setMem_id(mem_id);
+		
+			memberService.passRe(ppmv);
+		System.out.println("재확인좀");	
+		
+		return "redirect:member_update";
+		}
+	}
+	//비밀번호 수정 폼
+	@RequestMapping(value="/pass_update")
+	public String pass_update(HttpSession session, Model model)throws Exception{
+		//세션 객체 안에 있는 ID정보 저장
+				String mem_id = (String) session.getAttribute("mem_id");
+				System.out.println(mem_id);
+				//서비스안의 메서드 호출
+				MemberVO pmv = memberService.loginCheck(mem_id);
+		return "member/pass_update";
+	}
+	
+	//비밀번호 수정 저장
+	@RequestMapping(value="pass_update_ok", method=RequestMethod.POST)
+	public String pass_update_ok(HttpSession session,MemberVO member, Model model)throws Exception{
+
 		//세션 객체 안에 있는id정보 저장
 		String mem_id = (String) session.getAttribute("mem_id");
 		//서비스안의 메서드 호출
-		MemberVO upmv = this.memberService.loginCheck(mem_id);
-		member.setMem_id(mem_id);
+		MemberVO pmv = this.memberService.loginCheck(mem_id);
 		
-		memberService.memberUpdate(member);
+		memberService.passUpdate(member);
 		
-		System.out.println("수정확인 컨트롤");
-		
-		//경로는 어디로 할지 정하면 다시 지정하기
 		return "home";
+	}
+	
+	//회원정보 수정 폼
+		@RequestMapping(value="/member_update")
+		public String member_update(HttpSession session, Model model) throws Exception {
+			
+			//세션 객체 안에 있는 ID정보 저장
+			String mem_id = (String) session.getAttribute("mem_id");
+			//서비스안의 메서드 호출
+			MemberVO upmv = memberService.loginCheck(mem_id);
+			System.out.println("수정폼 컨트롤");
+			//정보 저장 후 페이지 이동
+			model.addAttribute("upmv", upmv);
+
+			return "member/member_update";
+		}
+		//회원정보 수정 저장
+		@RequestMapping(value="/update_ok", method=RequestMethod.POST)
+		public String update_ok(MemberVO member, HttpSession session, Model model) throws Exception {
+			
+			//세션 객체 안에 있는id정보 저장
+			String mem_id = (String) session.getAttribute("mem_id");
+			//서비스안의 메서드 호출
+			MemberVO upmv = this.memberService.loginCheck(mem_id);
+			member.setMem_id(mem_id);
+			
+			memberService.memberUpdate(member);
+			
+			System.out.println("수정확인 컨트롤");
+	
+			//경로는 어디로 할지 정하면 다시 지정하기
+			return "home";
+			
+			
+			
 	}
 	//회원탈퇴 폼
 	@RequestMapping(value="member_delete")

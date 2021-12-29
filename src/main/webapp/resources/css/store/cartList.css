@@ -109,6 +109,7 @@ input {
     padding: 12px 20px 13px;
     background-color: #fafafa;
     border-top: 3px solid #000;
+    margin-bottom: 0;
 }
 input[type="checkbox"].custom_checkbox_all {
 	overflow: hidden;
@@ -170,6 +171,18 @@ strong.checkbox_total {
 strong.checkbox_select {
 	width: 127px;
 }
+
+.inner_empty .txt{
+	width: 100%;
+    margin-top: 0;
+    padding: 115px 0 116px;
+    font-weight: 700;
+    font-size: 16px;
+    color: #333;
+    line-height: 24px;
+    text-align: center;
+}
+
 .cart_list_style {
 	border-bottom: 1px solid #000;
 }
@@ -261,7 +274,7 @@ input[type="checkbox"].cart_checkbox:checked + label:before {
 .cart_list_style li .product_info_amount_wrap {
 	float: left;
     position: relative;
-    width: 98px;
+    width: 168px;
     margin-top: 30px;
     padding: 0 34px;
 }
@@ -438,7 +451,7 @@ table {
     top: 36px;
     width: 51px;
     height: 52px;
-    background: transparent url(../../images/cart/subtract-line.png) center center no-repeat;
+    background: transparent url(../../images/cart/add-line.png) center center no-repeat;
     background-size: 52px;
 }
 .cart_total_price_wrap tbody td.cart_calculator:after {

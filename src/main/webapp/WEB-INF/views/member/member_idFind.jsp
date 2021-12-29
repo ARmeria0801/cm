@@ -27,14 +27,14 @@
 </head>
 
 <body>
-
+<%@ include file="../layout/header.jsp" %>
 <div class="container">
 <div class="col-lg-4"></div>
 <div class="col-lg-4">
   <div align="center"><h2>아이디 찾기</h2></div><br>
 
   
-  <form method="post" action="/id_find" onbutton="return check()">
+  <form method="post" action="/id_find" onSubmit="return check()">
    <table class="table table-bordered table-hover" align="center" >
     <div class="form-group">
     <label for="mem_name">이름</label>
@@ -47,7 +47,6 @@
     <div class="form-group">
     <input type="submit" class="btn btn-default form-control" value="확인">
       </div>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">ID확인</button>
    
    <!-- The Modal -->
    <div class="modal" id="myModal">
@@ -62,7 +61,7 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-      <h5>회원님의 아이디는${mv.mem_id}</h5>
+      <h5>회원님의 아이디는${mem_id}</h5>
       </div>
 
       <!-- Modal footer -->
@@ -81,6 +80,6 @@
   <div class="col-lg-4"></div>
 </div> 
 	
-
+<%@ include file="../layout/footer.jsp" %>
 </body>
 </html>

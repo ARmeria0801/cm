@@ -8,7 +8,7 @@ public class ReviewVO {
 	private int pay_num;			//결제 번호
 	private int gds_num;			//상품 번호
 	private String gds_name;		//상품 이름
-	private String ord_gdsoption;	//상품 옵션
+	private int ord_gdsoption;		//상품 옵션
 	private int mem_num;			//회원 번호
 	private String mem_id;			//후기 작성자
 	private String rev_content;		//후기 내용
@@ -47,10 +47,10 @@ public class ReviewVO {
 	public void setGds_name(String gds_name) {
 		this.gds_name = gds_name;
 	}
-	public String getOrd_gdsoption() {
+	public int getOrd_gdsoption() {
 		return ord_gdsoption;
 	}
-	public void setOrd_gdsoption(String ord_gdsoption) {
+	public void setOrd_gdsoption(int ord_gdsoption) {
 		this.ord_gdsoption = ord_gdsoption;
 	}
 	public int getMem_num() {

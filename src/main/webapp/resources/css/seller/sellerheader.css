@@ -1,0 +1,49 @@
+/* 해더에서 top으로 변경 예정 */
+@charset "UTF-8";
+
+header  {
+  margin: auto; /* header의 양쪽 여백(margin)을 동등하게 맞춤 -> 수평가운데정렬 */
+  margin-right: 400px;
+  width: 95%;
+  height: 145px;
+  display: flex;
+  align-items: center; /* 하위 요소들 수직 가운데정렬 */
+  position: relative;
+}
+
+fieldset {
+  border: none;  /* 기본 border 없애기(이 코드를 지우고 기본 border를 확인해보세요) */
+  /* margin: auto;  */
+  margin-left: 45%;
+  position: absolute; 
+}
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+.links {
+  /* 링크들을 상단 우측에 위치시킵니다. */
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.links .link_text {		/* 링크, 글자크기 조정 */
+  font-size: 15px;
+  margin-left: 5px;
+  color: #000;
+  text-decoration: none;
+}
+img.img_logo {	/* 로고이미지 파일 조정 */
+  margin-top: 50px; 
+  margin-left: 750px; 
+  margin-right: 30px; 
+  width: 220px;
+  height: 65px;
+  position: relative;
+/* display: inline-block; */
+}

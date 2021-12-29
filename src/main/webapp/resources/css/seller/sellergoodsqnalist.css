@@ -1,0 +1,54 @@
+.goodsQnaList {
+	margin-left: 300px; /* Same width as the sidebar + left position in px */
+	margin-right: 3px; 
+	margin-top: 75px; 
+	font-size: 14px; /* Increased text to enable scrolling */
+	padding: 0px 10px;
+}
+.goodsQnaList caption{
+	color : black;
+  	font-size: 25px; /* Increased text to enable scrolling */
+}
+
+#goodsQnaTable{
+	width: 100%;
+}
+
+#goodsQnaTable th{
+	text-align : center;
+	color: white;
+	background: #a0a0a0;
+}
+
+#goodsQnaTable td{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+#goodsQnaTable button{
+	text-align : center;
+	color: white;
+	background: #a0a0a0;
+}
+
+#goodsQnaTable button:hover{	/* 버튼을 마우스에 올렸을때 */
+	background-color: #ffffff;
+	color: #808080;
+}
+
+tr.notcheck {
+	background : #e9ecef;
+}
+.goodsQnaListName{
+	text-overflow:ellipsis; 
+	overflow:hidden; 
+	white-space:nowrap;
+} 
+
+table {width:900px;}  
+
+.hide {display:none;}
+
+.show {display:table-row;}  
+
+

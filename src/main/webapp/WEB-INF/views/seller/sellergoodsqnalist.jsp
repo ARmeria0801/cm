@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
@@ -8,55 +8,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
+<link rel="stylesheet" href="<c:url value='/resources/css/seller/sellergoodsqnalist.css'/>">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-<style type="text/css">
-.goodsQnaList {
-	margin-left: 300px; /* Same width as the sidebar + left position in px */
-	margin-right: 300px; 
-	margin-top: 10px; 
-	font-size: 14px; /* Increased text to enable scrolling */
-	padding: 0px 10px;
-}
-.goodsQnaList caption{
-	color : black;
-  	font-size: 25px; /* Increased text to enable scrolling */
-}
-
-#goodsQnaTable th{
-	text-align : center;
-	background: #a0a0a0;
-}
-
-#goodsQnaTable td{
-	padding-left: 5px;
-	padding-right: 5px;
-}
-
-tr.notcheck {
-	background : #e9ecef;
-}
-.goodsQnaListName{
-	text-overflow:ellipsis; 
-	overflow:hidden; 
-	white-space:nowrap;
-} 
-
-table {width:900px;}  
-
-.hide {display:none;}
-
-.show {display:table-row;}  
-
-
-</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
-	
-	
-</script>
+<script src="<%=request.getContextPath()%>/resources/js/sellerjs/sellercalculatelistjs.js"></script>
 </head>
 <body>
+<%@ include file="../layout/sellerheader.jsp" %>
 <%@ include file="../layout/sellerSidebar.jsp" %>
 <div class="goodsQnaList">
 	<table border="1" id="goodsQnaTable" style="table-layout:fixed" width="800">
@@ -67,7 +26,7 @@ table {width:900px;}
 			<th width="25%">문의제목</th>
 			<th width="20%">문의날짜</th>
 			<th width="20%">상태</th>
-			<th width="10%">액션</th>
+			<th width="20%">액션</th>
 		</tr>
 		<c:set var="num" value="${listcount-(page-1)*10}"/> 
 		<c:forEach var="sellergoodsQnaList" items="${sellergoodsQnaList}">
@@ -126,8 +85,9 @@ table {width:900px;}
 			</tr>
 			<tr>
 				<td colspan="6">
-					<div id="questiondetail${sellergoodsQnaList.gdsqna_num}" class="hide"></div>
+					<div id="questiondetail${sellergoodsQnaList.gdsqna_num}" class="hide"> </div>
 				</td>
+			
 			</tr>
 		</c:forEach>
 	</table>

@@ -1,18 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>후기 쓰기</title>
+<link rel="stylesheet" href="<c:url value='/resources/css/review/review_write.css'/>">
 </head>
 <body>
-		<h2 text-align="center">후기작성</h2>
+<%@ include file="../layout/header.jsp" %>
+<%@ include file="../layout/mypage.jsp" %>
+<div id="writeform">
+		<h2>후기작성</h2><br>
 	<form method="post" action="/review_ok" enctype="multipart/form-data">
 	<input type="hidden" id="gds_name" name ="gds_name" value="${gds_name}">
 	<input type="hidden" id="ord_gdsnum" name ="ord_gdsnum" value="${ord_gdsnum}">
 	<input type="hidden" id="ord_num" name ="ord_num" value="${ord_num}">
-		<table>
+		<table border="1" id="customers">
 			<tr>
 				<th>작성자</th>
 				<td>
@@ -32,11 +37,11 @@
 				</td>
 			</tr>
 		</table>
-		 <div id="reivewwrite_menu">
-    <input type="submit" value="등록" class="input_button" />
-    <input type="reset" value="취소" class="input_button"
-    onclick="$('#rev_content').focus();" />
-   </div>
+		<br>
+    <button type="submit">등록</button>
+    <button type="reset"  onclick="history.go(-1)">취소</button>
 	</form>
+</div>
+<%@ include file="../layout/footer.jsp" %>	
 </body>
 </html>

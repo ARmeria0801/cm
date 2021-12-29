@@ -124,4 +124,5 @@ public class GoodsService {
 		sellerDAO.goodsview(gds_num);
 	}
 
+
 }

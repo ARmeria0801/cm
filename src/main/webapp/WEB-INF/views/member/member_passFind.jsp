@@ -27,7 +27,7 @@
 </head>
 
 <body>
-
+<%@ include file="../layout/header.jsp" %>
 <div class="container">
 <div class="col-lg-4"></div>
 <div class="col-lg-4">
@@ -45,7 +45,7 @@
       <input type="email" class="form-control" id="mem_email" name="mem_email" placeholder="이메일을 입력해주세요" maxlength="20">
     </div>
     <div class="form-group" style="text-align:right">
-      	<a href="" > 아이디 찾기</a>
+      	<a href="member_idFind" > 아이디 찾기</a>
     	</div>
       <div class="form-group">
     <input type="submit" class="btn btn-default form-control" value="확인">
@@ -67,6 +67,6 @@ onClick="location.href=''" value="취소">
   <div class="col-lg-4"></div>
 </div> 
 	
-
+<%@ include file="../layout/footer.jsp" %>
 </body>
 </html>

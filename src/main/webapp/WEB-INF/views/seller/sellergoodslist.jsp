@@ -7,39 +7,43 @@
 <head>
 <meta charset="UTF-8">
 <title>상품목록</title>
+<link rel="stylesheet" href="<c:url value='/resources/css/seller/sellergoodslist.css'/>">
 <script src="<%=request.getContextPath()%>/resources/js/sellerjs/sellergoodslistjs.js"></script>
 </head>
 <body>
+<%@ include file="../layout/sellerheader.jsp" %>
+<%@ include file="../layout/sellerSidebar.jsp" %>
+	<div class="main">
+		<h1 class="goodslist_title">상품목록</h1>
 	<div id="goodslist_div">
-		<h2 class="goodslist_title">상품목록</h2>
-		<div id="goodslist_c">총 상품 개수 : ${listcount}</div>
+		<div id="goodslist_c">총 판매상품 : ${listcount}개</div>
 
 		<table id="goodslist_t" border="1">
-			<tr align="center" valign="middle">
-				<td height="26">
+			<tr>
+				<th height="26">
 					<div align="center">번호</div>
-				</td>
-				<td>
+				</th>
+				<th>
 					<div align="center">상품명</div>
-				</td>
-				<td >
+				</th>
+				<th >
 					<div align="center">가격</div>
-				</td>
-				<td>
+				</th>
+				<th>
 					<div align="center">재고</div>
-				</td>
-				<td>
+				</th>
+				<th>
 					<div align="center">등록일</div>
-				</td>
-				<td>
+				</th>
+				<th>
 					<div align="center">조회수 / 판매수</div>
-				</td>
-				<td>
+				</th>
+				<th>
 					<div align="center">상태</div>
-				</td>
-				<td>
+				</th>
+				<th>
 					<div align="center">액션</div>
-				</td>
+				</th>
 			</tr>
 			
 			<!-- 화면 출력 번호  변수 정의 -->		
@@ -78,16 +82,16 @@
 				<td>
 					<c:if test="${sgl.gds_viewyn eq 'y' || sgl.gds_viewyn eq 'Y'}">
 						<div align = "center">판매중</div>
-						<div align="center"><input type="button" value="판매중지" onclick="location='goodshide?page=${page}&gds_num=${sgl.gds_num}'"></div>
+						<button type="button" onclick="location='goodshide?page=${page}&gds_num=${sgl.gds_num}'">판매중지</button>
 					</c:if>
 					<c:if test="${sgl.gds_viewyn eq 'n' || sgl.gds_viewyn eq 'N'}">
 						<div align = "center">판매 중지</div>
-						<div align="center"><input type="button" value="판매중으로 전환" onclick="location='goodsview?page=${page}&gds_num=${sgl.gds_num}'"></div>
+						<button type="button" onclick="location='goodsview?page=${page}&gds_num=${sgl.gds_num}'">판매중으로 전환</button>
 					</c:if>
 				</td>
 				<td>
-					<div align="center"><input type="button" value="구매자 페이지에서 보기" onclick="location='goodsdetail?page=${page}&gds_num=${sgl.gds_num}'"></div>
-					<div align="center"><input type="button" value="삭제" onclick="del(${page},${sgl.gds_num})"></div>
+						<button type="button" onclick="location='goodsdetail?page=${page}&gds_num=${sgl.gds_num}'">구매자 페이지에서 보기</button><br><br>
+						<button type="button" onclick="del(${page},${sgl.gds_num})">삭제</button>
 				</td>
 			</tr>
 			</c:forEach>
@@ -118,6 +122,7 @@
 			</c:if>			
 		</div>
 
+	</div>
 	</div>
 </body>
 </html>

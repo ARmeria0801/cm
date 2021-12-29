@@ -12,7 +12,7 @@
  		<typeAlias type="com.myshop.cm.model.OptionVO" alias="OptionVO"/>
  		<typeAlias type="com.myshop.cm.model.GoodsVO" alias="GoodsVO"/>
  		<typeAlias type="com.myshop.cm.model.CartVO" alias="CartVO"/>
- 		<typeAlias type="com.myshop.cm.model.CartListVO" alias="CartListVO"/>
+ 		<typeAlias type="com.myshop.cm.model.DeliveryTemplateVO" alias="DeliveryTemplateVO"/>
  		<typeAlias type="com.myshop.cm.util.Pager" alias="Pager"/>
  		<typeAlias type="com.myshop.cm.model.FaqVO" alias="faq"/>
  		<typeAlias type="com.myshop.cm.model.NoticeVO" alias="notice"/>

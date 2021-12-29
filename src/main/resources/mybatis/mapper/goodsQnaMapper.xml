@@ -10,7 +10,7 @@
 		goodsqna gq
 		 left join goods g
 		 	on g.gds_num = gq.gds_num
-		where g.gds_seller=#{sel_name} and gdsqna_delyn=1 and gdsqna_depth=0
+		where g.gds_seller=#{sel_name} and gdsqna_delyn=0
 		
 	</select>
 	
@@ -38,7 +38,7 @@
 		 		on g.gds_num = gq.gds_num
 		 	left join goodsqnafiles gqf
 		 		on gqf.num = gq.gdsqna_num
-		where g.gds_seller=#{sel_name} and gdsqna_delyn=1 and gdsqna_depth=0
+		where g.gds_seller=#{sel_name} and gdsqna_delyn=0
 		group by gdsqna_num
 		order by gdsqna_num desc
 		limit #{pageIndex}, 10
@@ -46,7 +46,7 @@
 	
 	<!-- 답변 달렸는지 체크하기 -->
 	<select id="select_goodsqna_check" parameterType="int" resultType="int">
-		select gdsqna_answer from goodsqna where gdsqna_num=#{gdsqna_num} and gdsqna_delyn=1
+		select gdsqna_answer from goodsqna where gdsqna_num=#{gdsqna_num} and gdsqna_delyn=0
 	</select>
 	
 	<!-- 문의글 가져오기 -->
@@ -73,35 +73,11 @@
 		 		on g.gds_num = gq.gds_num
 		 	left join goodsqnafiles gqf
 		 		on gqf.num = gq.gdsqna_num
-		where gq.gdsqna_num=#{gdsqna_num} and gdsqna_delyn=1
+		where gq.gdsqna_num=#{gdsqna_num} and gdsqna_delyn=0
 	</select>
 	
-	<!-- gdsqna_ref 로 답변글 가져오기 -->
+	<!-- 답변글 가져오기 -->
 	<select id="select_goodsqna_answer" parameterType="int" resultType="goodsqna">
-		select
-			gq.gdsqna_num,
-			gq.gds_num,
-			gq.gdsqna_sort,
-			gq.gdsqna_title,
-			gq.gdsqna_content,
-			gq.gdsqna_ref,
-			gq.gdsqna_step,
-			gq.gdsqna_depth,
-			gq.gdsqna_date,
-			gq.gdsqna_check,
-			gq.gdsqna_answer,
-			gq.gdsqna_delyn,
-			gq.mem_id,
-			gqf.fname
-		from goodsqna gq
-		 	left join goodsqnafiles gqf
-		 		on gqf.num = gq.gdsqna_num
-		where gq.gdsqna_ref=#{gdsqna_num} 
-			  and gdsqna_delyn=1 and gdsqna_step=1
-	</select>
-	
-	<!--qna_num로 답변글 가져오기 -->
-	<select id="select_goodsqna_answer_num" parameterType="int" resultType="goodsqna">
 		select
 			gq.gdsqna_num,
 			gq.gds_num,
@@ -238,6 +214,5 @@
 		order by gdsqna_num desc
 		limit 0, 5
 	</select>
-	
 
 </mapper>

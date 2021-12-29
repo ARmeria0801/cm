@@ -21,23 +21,7 @@
 			<%-- <c:forEach items="${list}" var="list"> --%>
 			<li>
 				<div class="best_goods">
-				<img src="resources/images/logo2.png"/>
-				</div>
-				<div class="best_goods_name">
-					<a href="#">상품1</a>
-				</div>
-			</li>		
-			<li>
-				<div class="best_goods">
-				<img src="resources/images/logo2.png"/>
-				</div>
-				<div class="best_goods_name">
-					<a href="#">상품1</a>
-				</div>
-			</li>		
-			<li>
-				<div class="best_goods">
-				<img src="resources/images/logo2.png"/>
+				<img src="resources/image/logo2.png"/>
 				</div>
 				<div class="best_goods_name">
 					<a href="#">상품1</a>
@@ -53,7 +37,7 @@
 			</li>		
 			<li>
 				<div class="best_goods">
-				<img src="resources/images/logo2.png"/>
+				<img src="resources/image/logo2.png"/>
 				</div>
 				<div class="best_goods_name">
 					<a href="#">상품1</a>
@@ -61,7 +45,23 @@
 			</li>		
 			<li>
 				<div class="best_goods">
-				<img src="resources/images/logo2.png"/>
+				<img src="resources/image/logo2.png"/>
+				</div>
+				<div class="best_goods_name">
+					<a href="#">상품1</a>
+				</div>
+			</li>		
+			<li>
+				<div class="best_goods">
+				<img src="resources/image/logo2.png"/>
+				</div>
+				<div class="best_goods_name">
+					<a href="#">상품1</a>
+				</div>
+			</li>		
+			<li>
+				<div class="best_goods">
+				<img src="resources/image/logo2.png"/>
 				</div>
 				<div class="best_goods_name">
 					<a href="#">상품1</a>

@@ -157,4 +157,5 @@ public class OrderListVO {
 	public void setGds_price(int gds_price) {
 		this.gds_price = gds_price;
 	}
+
 }

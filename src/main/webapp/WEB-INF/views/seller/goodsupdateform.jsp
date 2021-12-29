@@ -23,7 +23,8 @@
 
 </head>
 <body>
-<%@ include file="../layout/sellerSidebar.jsp" %>
+<%@ include file="../layout/sellerheader.jsp" %>
+<%@ include file="../layout/sellerSidebar2.jsp" %>
 	<div id="goodsuploadform">
 		<form method="post" action="<%=request.getContextPath()%>/goodsupdate" enctype="multipart/form-data" onsubmit="return goodsupload_check()">
 			<input type="hidden" name="gds_num" value="${goods.gds_num}" />

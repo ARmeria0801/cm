@@ -13,7 +13,6 @@
 		select count(*) from member where mem_id = #{mem_id}
 	</select>
 	
-	
 	<!-- 회원가입 회원저장  -->
 	<!-- member테이블 -->
 	<insert id="joinm" parameterType="member">
@@ -55,9 +54,18 @@
 	select * from member where mem_id=#{mem_id} and mem_email= #{mem_email} and mem_delyn='Y'
 	</select>
 	
-	<!-- 회원 수정 -->
+	<!-- 비밀번호 재확인 -->
+	<select id="pass_recheck" parameterType="String" resultType="member">
+	select * from member where mem_pass=#{mem_pass} and mem_delyn='Y'
+	</select>
+	<!-- 비밀번호 수정 -->
+	<update id="pass_update" parameterType="member">
+	update member set mem_pass=#{mem_pass} where mem_id=#{mem_id}
+	</update>
+	
+	<!-- 회원정보 수정 -->
 	<update id="update" parameterType="member">
-	update member set mem_pass=#{mem_pass}, mem_name=#{mem_name}, mem_email=#{mem_email},
+	update member set mem_name=#{mem_name}, mem_email=#{mem_email},
 	mem_phone=#{mem_phone} where mem_id=#{mem_id}
 	</update>
 	

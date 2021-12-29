@@ -19,11 +19,17 @@ public class StoreService {
 	
 	// 상품 리스트
 	public List<GoodsVO> storeList(Pager pager) throws Exception {
+		//시작 rownum 생성
+		pager.makeRow();
+		//페이저 생성
+		pager.makePage(storeDAO.storeCount(pager));
+		
 		return storeDAO.storeList(pager);
 	}
 	
 	//상품 상세
 	public GoodsVO storeSelect(GoodsVO goodsVO) throws Exception {
+		
 		return storeDAO.storeSelect(goodsVO);
 	}
 	

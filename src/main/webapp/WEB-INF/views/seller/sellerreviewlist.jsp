@@ -1,32 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-#sellerreviewlist{
- 	margin-left: 260px; /* Same width as the sidebar + left position in px */
-    margin-right: 300px; /* Same width as the sidebar + left position in px */
-}
-#sellerreviewTable th{
-	background:#e9ecef;
-	text-align:center;
-	align-content: center;
-}
-caption {
-	color: black;
-}
-
-
-</style>
-
+<link rel="stylesheet" href="<c:url value='/resources/css/seller/sellerreviewlist.css'/>">
 <script type="text/javascript">
 function showreviewdetail(rev_num) {
 	if($("#reviewdetail"+rev_num).hasClass('hide')) {
 		 $.ajax({
-	 	    url : '/showsellerreviewdetail', // 요청 할 주소
+	 	    url : '/showreviewdetail', // 요청 할 주소
 	 	   // async: true, // false 일 경우 동기 요청으로 변경
 	 	    type : 'post', // GET, PUT
 	 	    dataType : 'text',
@@ -55,10 +40,11 @@ function showreviewdetail(rev_num) {
 
 </head>
 <body>
+<%@ include file="../layout/sellerheader.jsp" %>
 <%@ include file="../layout/sellerSidebar.jsp" %>
-<div id="sellerreviewlist">
+<div class="main">
 	<table border="1" id="sellerreviewTable">
-		<caption><h2>후기 목록</h2></caption>
+		<h1>후기 목록</h1>
 		<!-- 화면 출력 번호  변수 정의 -->		
 		<c:set var="num" value="${listcount-(page-1)*10}"/> 	
 		<tr>
@@ -104,11 +90,13 @@ function showreviewdetail(rev_num) {
 				<td>
 					${sellerReviewList.rev_date}
 				</td>
-				<td><input type="button" onclick="showreviewdetail(${sellerReviewList.rev_num})" value="후기 상세 보기"></td>
+				<td>
+				<button type="button" onclick="showreviewdetail(${sellerReviewList.rev_num})">후기 상세 보기</button>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="7">
-					<div id="reviewdetail${sellerReviewList.rev_num}" class="hide" style="height:150px"></div>
+					<div id="reviewdetail${sellerReviewList.rev_num}" class="hide"></div>
 				</td>
 			</tr>
 
