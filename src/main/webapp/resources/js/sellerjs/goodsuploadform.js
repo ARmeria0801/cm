@@ -4,7 +4,6 @@ function mcateload() {
 		var lcate_code = $("#lcate_code  option:selected").val();
 		 $.ajax({
 	    	    url : '/mcateload', // 요청 할 주소
-	    	   // async: true, // false 일 경우 동기 요청으로 변경
 	    	    type : 'post', // GET, PUT
 	    	    dataType : 'text',
 	    	    data : {

@@ -12,6 +12,7 @@
 .main {
 	margin-left: 300px; /* Same width as the sidebar + left position in px */
 	margin-right: 300px; 
+	margin-top: 90px; 
 	font-size: 18px; /* Increased text to enable scrolling */
 	padding: 0px 10px;
 	display: grid;
@@ -19,6 +20,7 @@
 	grid-template-columns: repeat(2, 1fr);
 	row-gap: 10px; /* row의 간격을 10px로 */
 	column-gap: 20px; /* column의 간격을 20px로 */
+	
 }
 
 .mainOrderTable th{
@@ -43,6 +45,7 @@ td{
 
 
 <body>
+<%@ include file="../layout/sellerheader.jsp" %>
 <%@ include file="../layout/sellerSidebar.jsp" %>
 
 <div class="main">

@@ -24,7 +24,7 @@
 </head>
 <body>
 <%@ include file="../layout/sellerheader.jsp" %>
-<%@ include file="../layout/sellerSidebar2.jsp" %>
+<%@ include file="../layout/sellerSidebar.jsp" %>
 	<div id="goodsuploadform">
 		<form method="post" action="<%=request.getContextPath()%>/goodsupload" enctype="multipart/form-data" onsubmit="return goodsupload_check()">
 			<table border="1" width="1200" class="goodsUploadForm">
@@ -69,7 +69,7 @@
 				<tr>
 					<th style="text-align:center;">상세설명</th>
 					<td width=900 class="content"><textarea id="gds_detail" name="gds_detail"
-							rows="100" cols="150"></textarea></td>
+							rows="20" cols="150"></textarea></td>
 				</tr>
 				<tr>
 					<th style="text-align:center;">옵션</th>
@@ -107,7 +107,7 @@
 				</tr>
 				<tr>
 					<th style="text-align:center;">교환 환불 기준</th>
-					<td class="content"><textarea id="gds_ears" name="gds_ears" rows="20" cols="150"></textarea></td>
+					<td class="content"><textarea id="gds_ears" name="gds_ears" rows="10" cols="150"></textarea></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center" class="content">
