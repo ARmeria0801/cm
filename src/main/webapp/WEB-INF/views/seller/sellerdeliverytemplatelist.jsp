@@ -21,7 +21,7 @@
 <%@ include file="../layout/sellerheader.jsp" %>
 <%@ include file="../layout/sellerSidebar.jsp" %>
 <div class="main">
-<h1>배송지 리스트</h1>
+<h1>배송템플릿 리스트</h1>
 <table border="1" id="customers">
 	<tr align="center">
 		<th>번호</th>

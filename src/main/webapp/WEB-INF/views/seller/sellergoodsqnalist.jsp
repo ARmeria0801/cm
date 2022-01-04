@@ -18,7 +18,7 @@
 <%@ include file="../layout/sellerheader.jsp" %>
 <%@ include file="../layout/sellerSidebar.jsp" %>
 <div class="goodsQnaList">
-	<table border="1" id="goodsQnaTable" style="table-layout:fixed" width="800">
+	<table border="1" id="goodsQnaTable" style="table-layout:fixed" width="700">
 		<caption>문의 내역</caption>
 		<tr>
 			<th width="5%">번호</th>
@@ -63,8 +63,6 @@
 								    	"gdsqna_num" : gdsqna_num,
 								    },
 								    success : function(data) {
-								    	 /*var tr = $(this).parent().parent();
-								    	 tr.html(data);*/
 								    	$("#questiondetail"+gdsqna_num).html(data);
 								    	$("#questiondetail"+gdsqna_num).removeClass('hide').addClass('show');  
 								    }, // 요청 완료 시
@@ -77,14 +75,14 @@
 								$("#questiondetail"+gdsqna_num).empty();
 								$("#questiondetail"+gdsqna_num).removeClass('show').addClass('hide');  
 								
+							}
 						}
-					}
 					</script>
 					<button id="detailbtn" type="button" onclick="showquestiondetail(${sellergoodsQnaList.gdsqna_num})">상세보기</button>
 				</td>
 			</tr>
 			<tr>
-				<td colspan="6">
+				<td colspan="6" >
 					<div id="questiondetail${sellergoodsQnaList.gdsqna_num}" class="hide"> </div>
 				</td>
 			

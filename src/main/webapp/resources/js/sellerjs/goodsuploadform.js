@@ -88,7 +88,6 @@ function deltemLoad() {
 		var deltem_num = $("#deltem_num  option:selected").val();
 		 $.ajax({
 	    	    url : '/deltemload', // 요청 할 주소
-	    	   // async: true, // false 일 경우 동기 요청으로 변경
 	    	    type : 'post', // GET, PUT
 	    	    dataType : 'text',
 	    	    data : {

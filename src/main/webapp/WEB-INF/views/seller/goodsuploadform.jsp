@@ -57,7 +57,8 @@
 				<tr>
 					<th style="text-align:center;">대표이미지</th>
 					<td class="content"> 
-						 <img style="width: 400px;" id="dummy-image" src="<%=request.getContextPath()%>/resources/images/goodsupload/dummyImage500X500.png">
+						 <img style="width: 400px;" id="dummy-image" 
+						 src="/resources/images/goodsupload/dummyImage500X500.png">
 					     <input type="file" id="gds_thumbnail1" name="gds_thumbnail1">
 					</td>
 				</tr>
@@ -76,13 +77,13 @@
 					<td class="content">
 						<div id="pre_set">
 							<input type="text" name="option1name" id="option1name" placeholder="옵션명" size=7 >  : 
-							<input type="text" name="option1val" id="option1val" style="width:300px" placeholder="쉼표(,)로 구분해주세요. ex)red,blue,..."><br>
+							<input type="text" name="option1val" id="option1val" 
+								   style="width:300px" placeholder="쉼표(,)로 구분해주세요. ex)red,blue,..."><br>
 							<input type="text" name="option2name" id="option2name" placeholder="옵션명" size=7>  : 
-							<input type="text" name="option2val" id="option2val" style="width:300px" placeholder="쉼표(,)로 구분해주세요. ex)L,XL,..."><br>
+							<input type="text" name="option2val" id="option2val" 
+								   style="width:300px" placeholder="쉼표(,)로 구분해주세요. ex)L,XL,..."><br>
 							<input type="button" value="추가 " onclick="add_item()">
 						</div>
-						
-						
 						<div id="field"></div>
 					</td>
 				</tr>
@@ -102,7 +103,6 @@
 						</select>
 						<div id="deltemdiv" name="deltemdiv">
 						</div>
-					
 					</td>
 				</tr>
 				<tr>
@@ -144,7 +144,6 @@
 					//id가 gds_content인 textarea에 스마트 에디터의 내용을 전달
 					editor_object.getById["gds_detail"].exec(
 							"UPDATE_CONTENTS_FIELD", []);
-					
 					//폼 submit
 					$("#form").submit();
 			})
@@ -152,8 +151,6 @@
 	</script>
 	<!-- 대표이미지 미리보기 -->
 	<script src="<%=request.getContextPath()%>/resources/js/sellerjs/previewimage.js"></script>
-	
-
 
 </body>
 </html>

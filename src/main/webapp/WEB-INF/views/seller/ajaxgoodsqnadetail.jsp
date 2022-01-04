@@ -27,7 +27,7 @@ function updategoodsqnaanswer(gdsqna_num) {
 </script>
 
 <!-- 문의글 -->
-	<table id="questionTable" border="1" >
+	<table id="questionTable" border="1" style="margin:0 auto;">
 		<caption>문의</caption>
 		<tr>
 			<th width="100">상품 정보</th>
@@ -61,8 +61,8 @@ function updategoodsqnaanswer(gdsqna_num) {
 	<c:choose>
 <%-- 답변이 있을 경우 --%>
 		<c:when test="${answer == 1 }">
-		<div id="goodsQnaAnswer${goodsanswer.gdsqna_num}">
-			<table border="1">
+		<div id="goodsQnaAnswer${goodsanswer.gdsqna_num}" >
+			<table border="1" style="margin:0 auto;">
 					<caption>답변</caption>
 					<tr>
 						<th width="100">답변 제목</th>
@@ -87,7 +87,7 @@ function updategoodsqnaanswer(gdsqna_num) {
 		<c:when test="${answer == 0 }">
 			<form action="goodsqnaanswer" method="post">
 			<input type="hidden" id="gdsqna_num" name="gdsqna_num" value="${goodsquestion.gdsqna_num}">
-				<table border="1">
+				<table border="1" style="margin:0 auto;">
 					<caption>답변 등록</caption>
 					<tr>
 						<th width="100">답변 제목</th>
